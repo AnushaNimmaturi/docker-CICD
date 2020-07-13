@@ -5,3 +5,12 @@ services:
 script:
     - docker build -t anushanimmaturi/node .
     - docker images anushanimmaturi/node
+
+before_deploy:
+    -docker login -u anushanimmaturi -p Anu61991
+
+deploy:
+    provider: script
+    script: docker push anushanimmaturi/node
+    on: 
+     branch: master
